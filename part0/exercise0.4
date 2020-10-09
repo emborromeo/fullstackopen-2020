@@ -1,0 +1,17 @@
+title NewNote
+
+Browser->Server: Submit Text
+Browser->Server: HTML-POST https://studies.cs.helsinki.fi/exampleapp/new_note
+Server-->Browser: HTTP STATUS CODE 302
+note right of Server: Redirect
+Browser->Server: HTML-GET https://studies.cs.helsinki.fi/exampleapp/notes
+Server-->Browser: HTML-CODE
+Browser->Server: HTML-GET https://studies.cs.helsinki.fi/exampleapp/main.css
+Server-->Browser: main.css
+Browser->Server: HTML-GET https://studies.cs.helsinki.fi/exampleapp/main.js
+Server-->Browser: main.js
+browser->server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/data.json
+server-->browser: [{"content":"Buy milk","date":"2020-09-30T15:01:09.994Z"} ...]
+
+
+
