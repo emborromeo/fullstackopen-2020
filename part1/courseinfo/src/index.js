@@ -13,9 +13,9 @@ const Header=(props)=>{
    console.log(props)
    return(         
      <div>
-     <Part part={props.parts[0]}/>
-     <Part part={props.parts[1]}/>
-     <Part part={props.parts[2]}/>
+     <Part part={props.course[0]}/>
+     <Part part={props.course[1]}/>
+     <Part part={props.course[2]}/>
     
      </div>            
    )
@@ -29,17 +29,18 @@ const Header=(props)=>{
 
      
    )
- }
- const Total=(props)=>{
+ } 
+ const Total=(props)=>{   
    return(
      <div>
-       <p>Number of exercises {props.parts[0].exercises+props.parts[1].exercises+props.parts[2].exercises} </p>
+       <p>Number of exercises {props.course[0].exercises+props.course[1].exercises+props.course[2].exercises}</p>
      </div>
    )
  }
  const App = () => {
-   const course = 'Half Stack Application Development'
-   const parts =[
+   const course = {
+   name: 'Half Stack Application Development',
+   parts: [
    {
      name: 'Fundamentals of React',
      exercises : 10
@@ -53,15 +54,15 @@ const Header=(props)=>{
      exercises : 14
    }
   ]
+}
    return (
      <div>
-       <Header course={course} />
-       <Content parts={parts}/>
-       <Total parts={parts}/>
+       <Header course={course.name} />
+       <Content course={course.parts}/>
+       <Total course={course.parts}/>
      </div>
    )
  }
-
 ReactDOM.render(<App />, document.getElementById('root'))
 
 // If you want your app to work offline and load faster, you can change
