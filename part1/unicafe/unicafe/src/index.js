@@ -23,6 +23,7 @@ return(
   <Button onClick={goodReview} text='good'/>
   <Button onClick={neutralReview} text='neutral'/>
   <Button onClick={badReview} text='bad'/>
+  <Header text='statistics'/>
   <Statistics good={good} neutral={neutral} bad={bad} all={all} average={(good-bad)/all} positive={(good*100)/all + '%'}/>
  
 </div>
