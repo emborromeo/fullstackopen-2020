@@ -2,10 +2,8 @@ import React, { useState } from 'react'
 import ReactDOM from 'react-dom';
 
 const Button = ({ onClick, text }) => (
-  <div>
-    <button onClick={onClick}>{text}
-  </button> 
-  </div>
+  
+  <button onClick={onClick}>{text}</button> 
   
 );
 const App=(props)=>{
@@ -15,15 +13,33 @@ const App=(props)=>{
  
 const anecdoteVotes=()=>{
   const votesCopy=[...votes];
-  votesCopy[selected]+=1;
+  votesCopy[selected]++;
   setVotes(votesCopy);
+  };
+const mostVotes=v=>{
+  let maxVotes = 0;
+  let maxVotesIndex = 0;
+  for (let i = 0; i < v.length; i++) {
+    if (v[i] > maxVotes) {
+      maxVotes = v[i];
+      maxVotesIndex = i;
+    }
   }
+  return [maxVotes, maxVotesIndex];
+
+}
+const [maxVotes, maxVotesIndex]=mostVotes(votes);
+
 return (
     <div>  
+      <h1>Anecdote of the day</h1>
       {props.anecdotes[selected]}
-      <br/> has {votes[selected]} votes 
-      <Button onClick={anecdoteVotes} text="vote"/>
+      <br/>has {votes[selected]} votes 
+      <br/><Button onClick={anecdoteVotes} text="vote"/>
       <Button onClick={()=>setSelected(Math.floor(Math.random() * anecdotes.length))} text="next anecdote"/>
+      <h1>Anecdote with most votes</h1>
+      {props.anecdotes[maxVotesIndex]}
+      <br/>has {maxVotes} votes
     </div>
   )
 };
