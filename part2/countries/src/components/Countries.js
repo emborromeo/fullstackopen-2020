@@ -2,7 +2,7 @@ import React from 'react'
 import Country from './Country'
 
 
-const Countries =({countries, filter}) => {
+const Countries =({countries, filter,  showCountry}) => {
     
     
   const countriesFiltered = countries.filter(country =>
@@ -25,6 +25,7 @@ const Countries =({countries, filter}) => {
       countriesFiltered.map(country =>
         <div key={country.name}>
           <span>{country.name}</span>
+          <button type='button' value={country.name} onClick={showCountry}>show</button>
           <br />
         </div>
       )

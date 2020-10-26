@@ -22,13 +22,16 @@ const  App = () => {
     console.log(event.target.value)
     setNewFilter(event.target.value)
   }
-
+  const showCountry = (event) => {
+    event.preventDefault()
+    setNewFilter(event.target.value)
+  }
 console.log(countries);
   return(
     <div>
       <Search value={newFilter} onChange={handleChange}/>
 
-      <Countries countries={countries} filter={newFilter}/>
+      <Countries countries={countries} showCountry={showCountry} filter={newFilter} />
 
 
     </div>
