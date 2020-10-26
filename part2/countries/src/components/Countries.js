@@ -1,10 +1,8 @@
 import React from 'react'
 import Country from './Country'
 
+const Countries = ({ filter, countries, weather, showCountry, handleCountryChange }) => {
 
-const Countries =({countries, filter,  showCountry}) => {
-    
-    
   const countriesFiltered = countries.filter(country =>
     country.name.toLowerCase().includes(filter.toLowerCase()))
 
@@ -13,11 +11,13 @@ const Countries =({countries, filter,  showCountry}) => {
       <div>
       </div>
     )
-  }else if (countriesFiltered.length === 1) {
-  
+  } else if (countriesFiltered.length === 1) {
+    // Set the capital city to get the right weather from weatherstack.com
+    handleCountryChange(countriesFiltered[0].capital)
+
     return (
         <div key={countriesFiltered[0].name}>
-          <Country country={countriesFiltered[0]} />
+          <Country country={countriesFiltered[0]} weather={weather} />
         </div>
     )
   } else if (countriesFiltered.length <= 10) {
